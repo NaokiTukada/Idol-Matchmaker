@@ -1,0 +1,24 @@
+---
+description: TypeScript フロントエンドの診断フローと UI 規約
+globs: frontend/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# TypeScript Frontend
+
+## フレームワーク
+
+README 上は未定（React/Next.js 想定）。決定までは既存 `frontend/` 構成に合わせる。
+
+## 診断フロー
+
+1. ユーザーが質問に回答
+2. 回答を API に送信
+3. 推薦結果（推しアイドル）を表示
+
+6評価軸の意味は [README.md](../../README.md) §5 を参照。
+
+## UI
+
+- 文言は日本語（想定ユーザー: 推し活初心者〜中級者）
+- API レスポンスの型はバックエンド `schemas/` と整合させる
