@@ -1,0 +1,33 @@
+---
+description: FastAPI バックエンドの3層アーキテクチャとスコア計算規約
+globs: backend/**/*.py
+alwaysApply: false
+---
+
+# FastAPI Backend
+
+## ディレクトリ責務
+
+| ディレクトリ | 責務 |
+|-------------|------|
+| `routers/` | HTTP ハンドラ（薄く保つ） |
+| `services/` | ビジネスロジック |
+| `schemas/` | Pydantic Request/Response モデル |
+
+## スコア計算
+
+- Strategy パターンで `services/scoring/`（または同等）に分離する
+- Router に距離計算・マッチングロジックを書かない
+- 距離関数の差し替えが可能な構成にする
+
+## 6軸キー名
+
+スキーマとマスターデータで以下を統一する（README §6.1 準拠）:
+
+`relationship`, `performance`, `visual`, `character`, `age_attribute`, `behavior`
+
+各軸の値は -1.0 〜 1.0。
+
+## 代表パターン
+
+実装後は `routers/` 内の最初のエンドポイントを canonical 例として参照する。
