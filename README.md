@@ -22,7 +22,7 @@
 * 推し活をもっと深く楽しみたいが、熱量を注ぐ対象が見つからない
 
 ## 3. システム要件 (System Requirements)
-* **Frontend:** TypeScript (フレームワーク未定: React/Next.js 等を想定)
+* **Frontend:** TypeScript (Next.js App Router)
 * **Backend:** FastAPI (Python)
 * **Architecture:** 軽量3層アーキテクチャ (Router / Service / Schema)
     * 初期開発速度とFastAPIの特性を活かすため、軽量な構成を採用。
@@ -63,4 +63,41 @@
     "behavior": 0.4
   }
 }
+```
+
+
+## 7. 開発環境 (Development)
+
+### 前提
+- Python 3.11+
+- Node.js 20+
+
+### バックエンド起動
+```bash
+cd backend
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# macOS/Linux: source .venv/bin/activate
+pip install "fastapi>=0.115.0" "uvicorn[standard]>=0.32.0" "pydantic>=2.0.0" "httpx>=0.27.0" "pytest>=8.0.0" "ruff>=0.8.0"
+uvicorn main:app --reload --port 8000
+```
+`http://localhost:8000/health` で `{"status":"ok"}` を確認。
+
+### フロントエンド起動
+```bash
+cd frontend
+npm install
+npm run dev
+```
+`http://localhost:3000` でトップページを確認。
+
+### Lint / Test
+```bash
+# Backend (backend/ ディレクトリで)
+ruff check .
+pytest
+
+# Frontend (frontend/ ディレクトリで)
+npm run lint
+npx tsc --noEmit
 ```

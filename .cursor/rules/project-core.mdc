@@ -11,7 +11,7 @@ alwaysApply: true
 
 ## アーキテクチャ
 
-- **Frontend:** TypeScript（フレームワーク未定: React/Next.js 想定）
+- **Frontend:** TypeScript（Next.js App Router）
 - **Backend:** FastAPI (Python)
 - **構成:** 軽量3層 — Router / Service / Schema
 - **スコア計算:** Strategy パターンで分離
@@ -21,7 +21,9 @@ alwaysApply: true
 ## ワークフロー
 
 - 大きな機能・新規モジュールは Plan Mode から始める
-- コード変更後は lint / test / typecheck を実行（コマンドはスキャフォールド後に本ルールへ追記）
+- コード変更後は lint / test / typecheck を実行
+  - Backend (`backend/`): `ruff check .` / `pytest`
+  - Frontend (`frontend/`): `npm run lint` / `npx tsc --noEmit`
 
 ## 避けること
 
